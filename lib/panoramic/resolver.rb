@@ -4,7 +4,8 @@ module Panoramic
     include Singleton
 
     # this method is mandatory to implement a Resolver
-    def find_templates(name, prefix, partial, details)
+    # NOTE that this fifth parameter seems to conflict with the inline documentation with rails
+    def find_templates(name, prefix, partial, details, outside_app_allowed = false)
       return [] if @@resolver_options[:only] && !@@resolver_options[:only].include?(prefix)
 
       conditions = {
